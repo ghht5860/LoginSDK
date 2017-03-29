@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "LoginApi.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
+    btn.frame = CGRectMake(0, 0, 80, 50);
+    btn.center = self.view.center;
+    [btn setTitle:@"弹出" forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(a:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+}
+
+- (void)a:(id)sender
+{
+    [[LoginApi sharedManage] addLoginViewWithSuperView:nil];
 }
 
 
