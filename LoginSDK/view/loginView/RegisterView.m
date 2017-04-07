@@ -16,6 +16,8 @@
 
 @property (nonatomic, strong) UITextField *passwordTF;
 
+@property (nonatomic, strong) UIButton *checkBoxBtn;
+
 @end
 
 @implementation RegisterView
@@ -125,25 +127,26 @@
     self.passwordTF.rightView = passwordRightView;
 
     //同意复选框
-    UIButton *checkBoxBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [loginImage addSubview:checkBoxBtn];
-    [checkBoxBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+    self.checkBoxBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [loginImage addSubview:self.checkBoxBtn];
+    [self.checkBoxBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.passwordTF.mas_bottom).offset(loginImage.frame.size.height/785.f *35);
         make.left.mas_equalTo(self.passwordTF.mas_left);
         make.width.mas_equalTo(loginImage.frame.size.height/785.f *60);
         make.height.mas_equalTo(loginImage.frame.size.height/785.f *60);
     }];
-    [checkBoxBtn setImage:[UIImage imageNamed:@"口"] forState:UIControlStateNormal];
-    [checkBoxBtn setImage:[UIImage imageNamed:@"口1"] forState:UIControlStateSelected];
-    [checkBoxBtn addTarget:self action:@selector(checkBoxClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.checkBoxBtn setImage:[UIImage imageNamed:@"口"] forState:UIControlStateNormal];
+    [self.checkBoxBtn setImage:[UIImage imageNamed:@"口1"] forState:UIControlStateSelected];
+    [self.checkBoxBtn addTarget:self action:@selector(checkBoxClick:) forControlEvents:UIControlEventTouchUpInside];
+    self.checkBoxBtn.selected = YES;
     
     //同意万家游戏用户条约
     UIButton *titleBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     [loginImage addSubview:titleBtn];
     [titleBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(checkBoxBtn.mas_top);
-        make.left.mas_equalTo(checkBoxBtn.mas_right);
-        make.bottom.mas_equalTo(checkBoxBtn.mas_bottom);
+        make.top.mas_equalTo(self.checkBoxBtn.mas_top);
+        make.left.mas_equalTo(self.checkBoxBtn.mas_right);
+        make.bottom.mas_equalTo(self.checkBoxBtn.mas_bottom);
         make.width.mas_equalTo(160);
     }];
     [titleBtn setTitle:@"同意万家游戏用户条约" forState:UIControlStateNormal];

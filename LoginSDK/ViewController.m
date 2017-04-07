@@ -32,6 +32,42 @@
 - (void)a:(id)sender
 {
     [[LoginApi sharedManage] addLoginViewWithSuperView:nil];
+    
+    NSString *str = nil;
+    
+    NSDictionary *dic = @{@"1":@"1",@"2":@" ",@"3":@"3",@"4":str == nil?@"":str};
+    
+    if (dic.allKeys.count < 3) {
+        NSLog(@"信息缺失");
+        return;
+    }else {
+        
+        for (id obj in dic.allKeys) {
+            NSLog(@"%@",dic[(NSString *)obj]);
+            NSString *str = [dic[(NSString *)obj] stringByReplacingOccurrencesOfString:@" " withString:@""];
+            if (str.length <= 0) {
+                NSLog(@"信息缺失");
+                return;
+            }
+        }
+    }
+    
+    
+    return;
+    [dic enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        
+        NSString *str = [NSString stringWithFormat:@"%@",obj];
+        
+        NSString *str1 = [str stringByReplacingOccurrencesOfString:@" " withString:@""];
+        
+        if (str1.length <= 0) {
+            NSLog(@"%@:信息缺失",key);
+        }
+        
+    }];
+    
+    
+    
 }
 
 

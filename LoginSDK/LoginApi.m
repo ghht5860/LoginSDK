@@ -68,7 +68,6 @@ static LoginApi *apiManage = nil;
 
 -(UIInterfaceOrientation)getStatusBarOrientation
 {
-    
     switch ([UIApplication sharedApplication].statusBarOrientation) {
         case UIInterfaceOrientationPortrait:
             NSLog(@"UIInterfaceOrientationPortrait");
