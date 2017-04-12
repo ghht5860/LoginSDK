@@ -10,6 +10,9 @@
 #import "Masonry.h"
 #import "LoginApi.h"
 
+#define IMAGE_HEIGHT 785.f
+#define IMAGE_WIDTH  870.f
+
 @interface RegisterView ()<UITextFieldDelegate>
 
 @property (nonatomic, strong) UITextField *userTF;
@@ -56,10 +59,10 @@
     self.userTF = [UITextField new];
     [loginImage addSubview:self.userTF];
     [self.userTF mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(closeBtn.mas_bottom).offset(loginImage.frame.size.height/785.f *55);
-        make.left.mas_equalTo(loginImage.mas_left).offset(loginImage.frame.size.width/870.f *24);
-        make.right.mas_equalTo(loginImage.mas_right).offset(-(loginImage.frame.size.width/870.f *24));
-        make.height.mas_equalTo(loginImage.frame.size.height/785.f *130);
+        make.top.mas_equalTo(closeBtn.mas_bottom).offset(loginImage.frame.size.height/IMAGE_HEIGHT *55);
+        make.left.mas_equalTo(loginImage.mas_left).offset(loginImage.frame.size.width/IMAGE_WIDTH *24);
+        make.right.mas_equalTo(loginImage.mas_right).offset(-(loginImage.frame.size.width/IMAGE_WIDTH *24));
+        make.height.mas_equalTo(loginImage.frame.size.height/IMAGE_HEIGHT *130);
     }];
     //    self.userTF.clearButtonMode = UITextFieldViewModeAlways;
     self.userTF.background = [UIImage imageNamed:@"输入框1"];
@@ -67,7 +70,7 @@
     [self.userTF becomeFirstResponder];
     
     //账号框左视图
-    UILabel *userLeftLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, loginImage.frame.size.height/785.f *130)];
+    UILabel *userLeftLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, loginImage.frame.size.height/IMAGE_HEIGHT *130)];
     userLeftLabel.text = @"账 号:";
     userLeftLabel.textAlignment = NSTextAlignmentCenter;
     userLeftLabel.font = [UIFont systemFontOfSize:18.f];
@@ -75,10 +78,10 @@
     self.userTF.leftView  = userLeftLabel;
     
     //账号右按钮
-    UIView *userRightView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, loginImage.frame.size.height/785.f *130 /2 +10, loginImage.frame.size.height/785.f *130)];
+    UIView *userRightView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, loginImage.frame.size.height/IMAGE_HEIGHT *130 /2 +10, loginImage.frame.size.height/IMAGE_HEIGHT *130)];
     
     UIButton *userRightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    userRightBtn.frame = CGRectMake(0, 0, loginImage.frame.size.height/785.f *130 /3, loginImage.frame.size.height/785.f *130 /3);
+    userRightBtn.frame = CGRectMake(0, 0, loginImage.frame.size.height/IMAGE_HEIGHT *130 /3, loginImage.frame.size.height/IMAGE_HEIGHT *130 /3);
     userRightBtn.center = userRightView.center;
     [userRightBtn setImage:[UIImage imageNamed:@"clear1"] forState:UIControlStateNormal];
     [userRightBtn setImage:[UIImage imageNamed:@"clear"] forState:UIControlStateHighlighted];
@@ -93,7 +96,7 @@
     self.passwordTF = [UITextField new];
     [loginImage addSubview:self.passwordTF];
     [self.passwordTF mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.userTF.mas_bottom).offset(loginImage.frame.size.height/785.f *30);
+        make.top.mas_equalTo(self.userTF.mas_bottom).offset(loginImage.frame.size.height/IMAGE_HEIGHT *30);
         make.left.mas_equalTo(self.userTF.mas_left);
         make.right.mas_equalTo(self.userTF.mas_right);
         make.height.mas_equalTo(self.userTF.mas_height);
@@ -112,10 +115,10 @@
     self.passwordTF.leftView = passwordLeftLabel;
     
     //密码框右视图
-    UIView *passwordRightView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, loginImage.frame.size.height/785.f *130 /2 +10, loginImage.frame.size.height/785.f *130)];
+    UIView *passwordRightView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, loginImage.frame.size.height/IMAGE_HEIGHT *130 /2 +10, loginImage.frame.size.height/IMAGE_HEIGHT *130)];
     
     UIButton *passwordClearBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    passwordClearBtn.frame = CGRectMake(0, 0, loginImage.frame.size.height/785.f *130 /3, loginImage.frame.size.height/785.f *130 /3);
+    passwordClearBtn.frame = CGRectMake(0, 0, loginImage.frame.size.height/IMAGE_HEIGHT *130 /3, loginImage.frame.size.height/IMAGE_HEIGHT *130 /3);
     passwordClearBtn.center = passwordRightView.center;
     [passwordClearBtn setImage:[UIImage imageNamed:@"clear1"] forState:UIControlStateNormal];
     [passwordClearBtn setImage:[UIImage imageNamed:@"clear"] forState:UIControlStateHighlighted];
@@ -130,10 +133,10 @@
     self.checkBoxBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [loginImage addSubview:self.checkBoxBtn];
     [self.checkBoxBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.passwordTF.mas_bottom).offset(loginImage.frame.size.height/785.f *35);
+        make.top.mas_equalTo(self.passwordTF.mas_bottom).offset(loginImage.frame.size.height/IMAGE_HEIGHT *35);
         make.left.mas_equalTo(self.passwordTF.mas_left);
-        make.width.mas_equalTo(loginImage.frame.size.height/785.f *60);
-        make.height.mas_equalTo(loginImage.frame.size.height/785.f *60);
+        make.width.mas_equalTo(loginImage.frame.size.height/IMAGE_HEIGHT *60);
+        make.height.mas_equalTo(loginImage.frame.size.height/IMAGE_HEIGHT *60);
     }];
     [self.checkBoxBtn setImage:[UIImage imageNamed:@"口"] forState:UIControlStateNormal];
     [self.checkBoxBtn setImage:[UIImage imageNamed:@"口1"] forState:UIControlStateSelected];
@@ -158,9 +161,9 @@
     UIButton *loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [loginImage addSubview:loginBtn];
     [loginBtn mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.passwordTF.mas_bottom).offset(loginImage.frame.size.height/785.f *135);
+        make.top.mas_equalTo(self.passwordTF.mas_bottom).offset(loginImage.frame.size.height/IMAGE_HEIGHT *135);
         make.left.mas_equalTo(self.passwordTF.mas_left);
-        make.right.mas_equalTo(loginImage.mas_centerX).offset(-(loginImage.frame.size.height/870.f *14));
+        make.right.mas_equalTo(loginImage.mas_centerX).offset(-(loginImage.frame.size.height/IMAGE_WIDTH *14));
         make.height.mas_equalTo(self.passwordTF.mas_height);
     }];
     [loginBtn setImage:[UIImage imageNamed:@"立即登陆按钮"] forState:UIControlStateNormal];
@@ -171,7 +174,7 @@
     [loginImage addSubview:registerBtn];
     [registerBtn mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(loginBtn.mas_top);
-        make.left.mas_equalTo(loginImage.mas_centerX).offset(loginImage.frame.size.height/870.f *14);
+        make.left.mas_equalTo(loginImage.mas_centerX).offset(loginImage.frame.size.height/IMAGE_WIDTH *14);
         make.right.mas_equalTo(self.passwordTF.mas_right);
         make.bottom.mas_equalTo(loginBtn.mas_bottom);
     }];
