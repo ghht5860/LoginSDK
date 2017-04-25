@@ -8,14 +8,10 @@
 
 #import "LoginModeSelectView.h"
 #import "LoginApi.h"
-#import "Masonry.h"
-#import "LoginView.h"
-#import "RegisterView.h"
 
 @interface LoginModeSelectView ()
 {
-    completionBlock loginCompletion;
-    completionBlock registerCompletion;
+    
 }
 @end
 
@@ -44,6 +40,7 @@
     [self setBackView];
 }
 
+//窗口效果
 - (void)setBackView
 {
     //窗口效果
@@ -65,23 +62,41 @@
         case 1:
         {
             //登陆
-            loginCompletion = ^(NSDictionary *dic) {
+            LoginView *loginView = [[LoginView alloc] initWithFrame:self.bounds];
+            loginView.completionBlock = ^(NSDictionary *dic) {
                 NSLog(@"%@",dic);
             };
-            LoginView *loginView = [[LoginView alloc] initWithFrame:self.bounds];
-            loginView.completionBlock = loginCompletion;
             [self addSubview:loginView];
             break;
         }
         case 2:
         {
             //注册
-            registerCompletion = ^(NSDictionary *dic) {
+            RegisterView *registerView = [[RegisterView alloc] initWithFrame:self.bounds];
+            registerView.completionBlock = ^(NSDictionary *dic) {
                 NSLog(@"%@",dic);
             };
-            RegisterView *registerView = [[RegisterView alloc] initWithFrame:self.bounds];
-            registerView.completionBlock = registerCompletion;
             [self addSubview:registerView];
+            break;
+        }
+        case 3:
+        {
+            //一键试玩
+            TryGameView *tryGameView = [[TryGameView alloc] initWithFrame:self.bounds];
+            tryGameView.completionBlock = ^(NSDictionary *dic) {
+                NSLog(@"%@",dic);
+            };
+            [self addSubview:tryGameView];
+            break;
+        }
+        case 4:
+        {
+            //手机登录
+            PhoneLoginView *phoneLoginView = [[PhoneLoginView alloc] initWithFrame:self.bounds];
+            phoneLoginView.completionBlock = ^(NSDictionary *dic) {
+                NSLog(@"%@",dic);
+            };
+            [self addSubview:phoneLoginView];
             break;
         }
         default:

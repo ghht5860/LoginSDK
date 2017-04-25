@@ -9,10 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import "Masonry.h"
+#import "define.h"
+
 #import "BackgroundView.h"
 #import "LoginModeSelectView.h"
-
-#define STATUS_BAR_ORIENTATION @"StatusBarOrientation"
+#import "LoginView.h"
+#import "RegisterView.h"
+#import "TryGameView.h"
+#import "PhoneLoginView.h"
 
 @interface LoginApi : NSObject
 

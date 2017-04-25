@@ -1,16 +1,15 @@
 //
-//  RegisterView.m
+//  TryView.m
 //  LoginSDK
 //
-//  Created by admin on 2017/3/29.
+//  Created by admin on 2017/4/25.
 //  Copyright © 2017年 TJ. All rights reserved.
 //
 
-#import "RegisterView.h"
+#import "TryGameView.h"
 #import "LoginApi.h"
 
-
-@interface RegisterView ()<UITextFieldDelegate>
+@interface TryGameView ()<UITextFieldDelegate>
 
 @property (nonatomic, strong) UITextField *userTF;
 
@@ -20,7 +19,7 @@
 
 @end
 
-@implementation RegisterView
+@implementation TryGameView
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -50,7 +49,7 @@
         make.height.mas_equalTo(backView.frame.size.height/IMAGE_HEIGHT * 100);
     }];
     navTitle.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.8];
-    navTitle.text = @"账号注册";
+    navTitle.text = @"一键试玩";
     navTitle.textColor = [UIColor redColor];
     navTitle.textAlignment = NSTextAlignmentCenter;
     navTitle.font = [UIFont fontWithName:@"Helvetica-Bold" size:18.f];
@@ -158,47 +157,47 @@
     [beginGameBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     beginGameBtn.tag = 13;
     
-    //一键试玩
-    UIButton *tryGameBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    [backView addSubview:tryGameBtn];
-    [tryGameBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+    //手机登陆
+    UIButton *phoneLoginBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    [backView addSubview:phoneLoginBtn];
+    [phoneLoginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(backView.mas_bottom);
         make.left.mas_equalTo(backView.mas_left);
         make.top.mas_equalTo(beginGameBtn.mas_bottom).offset(backView.frame.size.height/IMAGE_HEIGHT *40);
         make.width.mas_equalTo(backView.frame.size.width/3);
     }];
-    tryGameBtn.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.8];
-    [tryGameBtn setTitle:@"一键试玩" forState:UIControlStateNormal];
-    [tryGameBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [tryGameBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-    tryGameBtn.tag = 14;
-    
-    //手机登陆
-    UIButton *phoneLoginBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    [backView addSubview:phoneLoginBtn];
-    [phoneLoginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(tryGameBtn.mas_top);
-        make.left.mas_equalTo(tryGameBtn.mas_right);
-        make.bottom.mas_equalTo(tryGameBtn.mas_bottom);
-        make.width.mas_equalTo(tryGameBtn.mas_width);
-    }];
-    phoneLoginBtn.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.7];
+    phoneLoginBtn.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.8];
     [phoneLoginBtn setTitle:@"手机登录" forState:UIControlStateNormal];
     [phoneLoginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [phoneLoginBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-    phoneLoginBtn.tag = 15;
+    phoneLoginBtn.tag = 14;
+    
+    //账号注册
+    UIButton *registerBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    [backView addSubview:registerBtn];
+    [registerBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(phoneLoginBtn.mas_top);
+        make.left.mas_equalTo(phoneLoginBtn.mas_right);
+        make.bottom.mas_equalTo(phoneLoginBtn.mas_bottom);
+        make.width.mas_equalTo(phoneLoginBtn.mas_width);
+    }];
+    registerBtn.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.7];
+    [registerBtn setTitle:@"账号注册" forState:UIControlStateNormal];
+    [registerBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [registerBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+    registerBtn.tag = 15;
     
     //用户登陆
     UIButton *userLoginBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     [backView addSubview:userLoginBtn];
     [userLoginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(phoneLoginBtn.mas_top);
-        make.left.mas_equalTo(phoneLoginBtn.mas_right);
+        make.top.mas_equalTo(registerBtn.mas_top);
+        make.left.mas_equalTo(registerBtn.mas_right);
         make.right.mas_equalTo(backView.mas_right);
-        make.bottom.mas_equalTo(phoneLoginBtn.mas_bottom);
+        make.bottom.mas_equalTo(registerBtn.mas_bottom);
     }];
     userLoginBtn.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.8];
-    [userLoginBtn setTitle:@"用户登录" forState:UIControlStateNormal];
+    [userLoginBtn setTitle:@"已有账号" forState:UIControlStateNormal];
     [userLoginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [userLoginBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     userLoginBtn.tag = 16;
@@ -242,16 +241,16 @@
         }
         case 14:
         {
-            NSLog(@"一键试玩");
+            NSLog(@"手机登录");
             [self removeFromSuperview];
-            [[LoginApi sharedManage].loginModeSelectView setViewWithNumber:3];
+            [[LoginApi sharedManage].loginModeSelectView setViewWithNumber:4];
             break;
         }
         case 15:
         {
-            NSLog(@"手机登录");
+            NSLog(@"账号注册");
             [self removeFromSuperview];
-            [[LoginApi sharedManage].loginModeSelectView setViewWithNumber:4];
+            [[LoginApi sharedManage].loginModeSelectView setViewWithNumber:2];
             break;
         }
         case 16:

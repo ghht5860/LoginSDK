@@ -1,16 +1,16 @@
 //
-//  RegisterView.h
+//  PhoneLoginView.h
 //  LoginSDK
 //
-//  Created by admin on 2017/3/29.
+//  Created by admin on 2017/4/25.
 //  Copyright © 2017年 TJ. All rights reserved.
-//  账号注册
+//  手机登录
 
 #import <UIKit/UIKit.h>
 
 typedef void(^completionBlock)(NSDictionary *dic);
 
-@interface RegisterView : UIView
+@interface PhoneLoginView : UIView
 
 @property (nonatomic, copy) completionBlock completionBlock;
 
