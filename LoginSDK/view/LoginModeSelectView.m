@@ -9,6 +9,11 @@
 #import "LoginModeSelectView.h"
 #import "LoginApi.h"
 
+#import "LoginView.h"
+#import "RegisterView.h"
+#import "TryGameView.h"
+#import "PhoneLoginView.h"
+
 @interface LoginModeSelectView ()
 {
     

@@ -8,6 +8,10 @@
 
 #import "PhoneLoginView.h"
 #import "LoginApi.h"
+#import "Masonry.h"
+#import "define.h"
+#import "ImagePathUtil.h"
+#import "LoginModeSelectView.h"
 
 @interface PhoneLoginView ()<UITextFieldDelegate>
 
@@ -78,7 +82,7 @@
         make.height.mas_equalTo(backView.frame.size.height/IMAGE_HEIGHT *100);
     }];
     self.userTF.clearButtonMode = UITextFieldViewModeAlways;
-    self.userTF.background = [UIImage imageNamed:@"输入框1"];
+    self.userTF.background = [UIImage imageNamed:[ImagePathUtil getKaYiKaImageBundlePath:@"输入框1"]];
     self.userTF.delegate = self;
     
     //账号框左视图
@@ -99,7 +103,7 @@
         make.height.mas_equalTo(self.userTF.mas_height);
     }];
     self.passwordTF.clearButtonMode = UITextFieldViewModeAlways;
-    self.passwordTF.background = [UIImage imageNamed:@"输入框1"];
+    self.passwordTF.background = [UIImage imageNamed:[ImagePathUtil getKaYiKaImageBundlePath:@"输入框1"]];
     self.passwordTF.secureTextEntry = YES;
     self.passwordTF.delegate = self;
     
@@ -138,8 +142,8 @@
         make.width.mas_equalTo(backView.frame.size.height/IMAGE_HEIGHT *40);
         make.height.mas_equalTo(backView.frame.size.height/IMAGE_HEIGHT *40);
     }];
-    [self.checkBoxBtn setImage:[UIImage imageNamed:@"口"] forState:UIControlStateNormal];
-    [self.checkBoxBtn setImage:[UIImage imageNamed:@"口1"] forState:UIControlStateSelected];
+    [self.checkBoxBtn setImage:[UIImage imageNamed:[ImagePathUtil getKaYiKaImageBundlePath:@"口"]] forState:UIControlStateNormal];
+    [self.checkBoxBtn setImage:[UIImage imageNamed:[ImagePathUtil getKaYiKaImageBundlePath:@"口1"]] forState:UIControlStateSelected];
     [self.checkBoxBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     self.checkBoxBtn.tag = 12;
     self.checkBoxBtn.selected = YES;
@@ -292,7 +296,7 @@
 - (void)beginGameClick
 {
     if (!self.checkBoxBtn.selected) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请同意条款" message:@"" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请阅读并同意条款" message:@"" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
         return;
     }
@@ -301,7 +305,7 @@
         self.completionBlock(dic);
     }
     
-    [[LoginApi sharedManage] removeLoginView];
+    [self closeLoginView];
 
 }
 
@@ -310,10 +314,10 @@
 #pragma mark UITextFieldDelegate
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    self.userTF.background = [UIImage imageNamed:@"输入框1"];
-    self.passwordTF.background = [UIImage imageNamed:@"输入框1"];
+    self.userTF.background = [UIImage imageNamed:[ImagePathUtil getKaYiKaImageBundlePath:@"输入框1"]];
+    self.passwordTF.background = [UIImage imageNamed:[ImagePathUtil getKaYiKaImageBundlePath:@"输入框1"]];
     
-    textField.background = [UIImage imageNamed:@"输入框"];
+    textField.background = [UIImage imageNamed:[ImagePathUtil getKaYiKaImageBundlePath:@"输入框"]];
     
     return YES;
 }

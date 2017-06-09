@@ -33,6 +33,8 @@
 		84CB051A1E8CAD7600F58C35 /* LoginModeSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CB05131E8CAD7600F58C35 /* LoginModeSelectView.m */; };
 		84CB051B1E8CAD7600F58C35 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CB05161E8CAD7600F58C35 /* LoginView.m */; };
 		84CB051C1E8CAD7600F58C35 /* RegisterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CB05181E8CAD7600F58C35 /* RegisterView.m */; };
+		84CDA4FF1EB31E2600B863E9 /* LoginSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84CDA4FE1EB31E2600B863E9 /* LoginSDK.bundle */; };
+		84CDA50E1EB3253300B863E9 /* ImagePathUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CDA50D1EB3253300B863E9 /* ImagePathUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +111,9 @@
 		84CB05161E8CAD7600F58C35 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
 		84CB05171E8CAD7600F58C35 /* RegisterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterView.h; sourceTree = "<group>"; };
 		84CB05181E8CAD7600F58C35 /* RegisterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterView.m; sourceTree = "<group>"; };
+		84CDA4FE1EB31E2600B863E9 /* LoginSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = LoginSDK.bundle; sourceTree = "<group>"; };
+		84CDA50C1EB3253300B863E9 /* ImagePathUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePathUtil.h; sourceTree = "<group>"; };
+		84CDA50D1EB3253300B863E9 /* ImagePathUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePathUtil.m; sourceTree = "<group>"; };
 		84D7B8091EAE29610060D0DA /* define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = define.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -182,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				844247251E5EDAE1003D3213 /* main.m */,
+				84CDA4FE1EB31E2600B863E9 /* LoginSDK.bundle */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -283,6 +289,8 @@
 		84D7B8081EAE293C0060D0DA /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				84CDA50C1EB3253300B863E9 /* ImagePathUtil.h */,
+				84CDA50D1EB3253300B863E9 /* ImagePathUtil.m */,
 				84D7B8091EAE29610060D0DA /* define.h */,
 			);
 			path = Util;
@@ -399,6 +407,7 @@
 				844247311E5EDAE1003D3213 /* Assets.xcassets in Resources */,
 				844A55DB1EAEE33500A8C1D0 /* pop in Resources */,
 				8442472F1E5EDAE1003D3213 /* Main.storyboard in Resources */,
+				84CDA4FF1EB31E2600B863E9 /* LoginSDK.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,6 +438,7 @@
 				844A55C01EAEE31400A8C1D0 /* MASViewAttribute.m in Sources */,
 				84CB05191E8CAD7600F58C35 /* BackgroundView.m in Sources */,
 				84CB051B1E8CAD7600F58C35 /* LoginView.m in Sources */,
+				84CDA50E1EB3253300B863E9 /* ImagePathUtil.m in Sources */,
 				84CB051A1E8CAD7600F58C35 /* LoginModeSelectView.m in Sources */,
 				844A55BC1EAEE31400A8C1D0 /* MASCompositeConstraint.m in Sources */,
 				844A55BE1EAEE31400A8C1D0 /* MASConstraintMaker.m in Sources */,
@@ -595,10 +605,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = LoginSDK/Info.plist;
+				INSTALL_PATH = "$(LOCAL_APPS_DIR)";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vanggame.LoginSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SHARED_PRECOMPS_DIR = "$(OBJROOT)/SharedPrecompiledHeaders";
+				SKIP_INSTALL = NO;
 			};
 			name = Debug;
 		};
@@ -610,10 +622,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = LoginSDK/Info.plist;
+				INSTALL_PATH = "$(LOCAL_APPS_DIR)";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vanggame.LoginSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SHARED_PRECOMPS_DIR = "$(OBJROOT)/SharedPrecompiledHeaders";
+				SKIP_INSTALL = NO;
 			};
 			name = Release;
 		};

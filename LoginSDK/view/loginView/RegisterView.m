@@ -8,6 +8,11 @@
 
 #import "RegisterView.h"
 #import "LoginApi.h"
+#import "define.h"
+#import "Masonry.h"
+#import "ImagePathUtil.h"
+
+#import "LoginModeSelectView.h"
 
 
 @interface RegisterView ()<UITextFieldDelegate>
@@ -78,7 +83,7 @@
         make.height.mas_equalTo(backView.frame.size.height/IMAGE_HEIGHT *100);
     }];
     self.userTF.clearButtonMode = UITextFieldViewModeAlways;
-    self.userTF.background = [UIImage imageNamed:@"输入框1"];
+    self.userTF.background = [UIImage imageNamed:[ImagePathUtil getKaYiKaImageBundlePath:@"输入框1"]];
     self.userTF.delegate = self;
     
     //账号框左视图
@@ -99,7 +104,7 @@
         make.height.mas_equalTo(self.userTF.mas_height);
     }];
     self.passwordTF.clearButtonMode = UITextFieldViewModeAlways;
-    self.passwordTF.background = [UIImage imageNamed:@"输入框1"];
+    self.passwordTF.background = [UIImage imageNamed:[ImagePathUtil getKaYiKaImageBundlePath:@"输入框1"]];
     self.passwordTF.secureTextEntry = YES;
     self.passwordTF.delegate = self;
     
@@ -121,8 +126,8 @@
         make.width.mas_equalTo(backView.frame.size.height/IMAGE_HEIGHT *40);
         make.height.mas_equalTo(backView.frame.size.height/IMAGE_HEIGHT *40);
     }];
-    [self.checkBoxBtn setImage:[UIImage imageNamed:@"口"] forState:UIControlStateNormal];
-    [self.checkBoxBtn setImage:[UIImage imageNamed:@"口1"] forState:UIControlStateSelected];
+    [self.checkBoxBtn setImage:[UIImage imageNamed:[ImagePathUtil getKaYiKaImageBundlePath:@"口"]] forState:UIControlStateNormal];
+    [self.checkBoxBtn setImage:[UIImage imageNamed:[ImagePathUtil getKaYiKaImageBundlePath:@"口1"]] forState:UIControlStateSelected];
     [self.checkBoxBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     self.checkBoxBtn.tag = 11;
     self.checkBoxBtn.selected = YES;
@@ -279,7 +284,7 @@
         self.completionBlock(dic);
     }
     
-    [[LoginApi sharedManage] removeLoginView];
+    [self closeLoginView];
     
     if (self.userTF.text.length > 0 && self.passwordTF.text.length > 0) {
         saveUser(self.userTF.text);
@@ -292,11 +297,10 @@
 #pragma mark UITextFieldDelegate
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    self.userTF.background = [UIImage imageNamed:@"输入框1"];
-    self.passwordTF.background = [UIImage imageNamed:@"输入框1"];
+    self.userTF.background = [UIImage imageNamed:[ImagePathUtil getKaYiKaImageBundlePath:@"输入框1"]];
+    self.passwordTF.background = [UIImage imageNamed:[ImagePathUtil getKaYiKaImageBundlePath:@"输入框1"]];
     
-    textField.background = [UIImage imageNamed:@"输入框"];
-    
+    textField.background = [UIImage imageNamed:[ImagePathUtil getKaYiKaImageBundlePath:@"输入框"]];
     return YES;
 }
 

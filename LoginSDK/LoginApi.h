@@ -9,15 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import "Masonry.h"
-#import "define.h"
-
-#import "BackgroundView.h"
-#import "LoginModeSelectView.h"
-#import "LoginView.h"
-#import "RegisterView.h"
-#import "TryGameView.h"
-#import "PhoneLoginView.h"
+@class BackgroundView;
+@class LoginModeSelectView;
 
 @interface LoginApi : NSObject
 
@@ -39,7 +32,7 @@
 
  @param superView 父类试图
  */
-- (void)addLoginViewWithSuperView:(UIView *)superView;
+- (void)showLoginViewWithSuperView:(UIView *)superView;
 
 
 /**

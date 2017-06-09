@@ -31,7 +31,7 @@
 
 - (void)a:(id)sender
 {
-    [[LoginApi sharedManage] addLoginViewWithSuperView:nil];
+    [[LoginApi sharedManage] showLoginViewWithSuperView:nil];
     
     NSString *str = nil;
     
